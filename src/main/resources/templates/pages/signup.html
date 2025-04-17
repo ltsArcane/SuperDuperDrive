@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<th:block th:replace="~{layout/layout :: layout('Sign Up', ~{::content})}">
+  <th:block th:fragment="content">
+    <form th:action="@{/signup}" method="POST" th:object="${user}">
+      <a th:href="@{/login}" style="font-size: 0.9rem; margin-bottom: 1rem; display: inline-block;">← Back to Login</a>
+
+      <h2 style="margin: 0 0 1rem 0;">Sign Up</h2>
+
+      <div th:if="${signupError}" class="alert alert-danger" style="margin-bottom: 1rem;" th:text="${signupError}">Placeholder</div>
+      <div th:if="${signupSuccess}" class="alert alert-dark" style="margin-bottom: 1rem;">You successfully signed up! Please continue to the <a th:href="@{/login}">login</a> page.</div>
+
+      <label for="firstName">First Name</label>
+      <input id="firstName" type="text" th:field="*{firstName}" placeholder="Enter First Name" maxlength="20" required>
+
+      <label for="lastName">Last Name</label>
+      <input id="lastName" type="text" th:field="*{lastName}" placeholder="Enter Last Name" maxlength="20" required>
+
+      <label for="username">Username</label>
+      <input id="username" type="text" th:field="*{username}" placeholder="Enter Username" maxlength="20" required>
+
+      <label for="password">Password</label>
+      <input id="password" type="password" th:field="*{password}" placeholder="Enter Password" maxlength="20" required>
+
+      <input type="submit" value="Sign Up" />
+    </form>
+  </th:block>
+</th:block>
+</html>

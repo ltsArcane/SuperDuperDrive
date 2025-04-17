@@ -1,0 +1,40 @@
+<th:block th:fragment="layout(title, content)">
+
+    <head>
+        <title th:text="${title}">Default Title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+        <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/bootstrap.min.css}">
+        <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/styles.css}">
+    </head>
+
+    <body>
+        <header>
+            <div class="navbar">
+                <h1 class="site-title">Super<i>Duper</i>Drive&trade;</h1>
+                <nav class="nav-links">
+                    <form th:action="@{/chatroom}" method="get" style="display:inline;">
+                        <button type="submit" sec:authorize="isAuthenticated()">Home</button>
+                        <button type="submit" sec:authorize="isAnonymous()" disabled>Home</button>
+                    </form>
+                    <form th:action="@{/signup}" method="get" style="display:inline;">
+                        <button type="submit" sec:authorize="isAnonymous()">Signup</button>
+                        <button type="submit" sec:authorize="isAuthenticated()" disabled>Signup</button>
+                    </form>
+                    <form th:action="@{/login}" method="get" style="display:inline;">
+                        <button type="submit" sec:authorize="isAnonymous()">Login</button>
+                        <button type="submit" sec:authorize="isAuthenticated()" disabled>Login</button>
+                    </form>
+                    <form th:action="@{/logout}" method="post" style="display:inline;">
+                        <button type="submit" sec:authorize="isAuthenticated()">Logout</button>
+                        <button type="submit" sec:authorize="isAnonymous()" disabled>Logout</button>
+                    </form>
+                </nav>
+            </div>
+        </header>
+        <main th:replace="${content}"></main>
+        <footer>
+            <p>&copy; <span th:text="${currentYear}"></span> Super<i>Duper</i>Drive</p>
+        </footer>
+    </body>
+</th:block>
