@@ -2,7 +2,9 @@ package com.udacity.jwdnd.course1.cloudstorage.services;
 
 import java.util.ArrayList;
 
+import com.udacity.jwdnd.course1.cloudstorage.mappers.UserMapper;
 import com.udacity.jwdnd.course1.cloudstorage.services.HashService; // Just for clarity.
+import com.udacity.jwdnd.course1.cloudstorage.models.User;
 
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -24,7 +26,7 @@ public class AuthenticationService implements AuthenticationProvider {
         String username = authentication.getName();
         String password = authentication.getCredentials().toString();
 
-        User user = userMapper.findUserByName(username);
+        User user = userMapper.findUserByUsername(username);
         if (user != null) {
             String encodedSalt = user.getSalt();
             String hashedPassword = hashService.getHashedValue(password, encodedSalt);
