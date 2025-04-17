@@ -1,0 +1,143 @@
+header {
+    background-color: #1e1e2f;
+    color: white;
+    padding: 1rem 2rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.site-title {
+    font-size: 1.6rem;
+    margin: 0;
+}
+
+.nav-links {
+    display: flex;
+    gap: 1rem;
+}
+
+.nav-links a {
+    color: white;
+    cursor: pointer;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0.5rem;
+    border-radius: 5px;
+    transition: background-color 0.2s ease;
+}
+
+.nav-links a:hover {
+    background-color: #3c3c5c;
+}
+
+.nav-links form {
+    all: unset;
+    display: inline;
+}
+
+.nav-links form button[type="submit"]:enabled {
+    all: unset;
+    cursor: pointer;
+    color: white;
+    font-weight: 500;
+    padding: 0.5rem;
+    border-radius: 5px;
+    transition: background-color 0.2s ease;
+}
+
+.nav-links form button[type="submit"]:enabled:hover {
+    background-color: #3c3c5c;
+}
+
+.nav-links form button[type="submit"]:disabled {
+    all:unset;
+    cursor: not-allowed;
+    color: gray;
+    font-weight: 500;
+    padding: 0.5rem;
+    border-radius: 5px;
+    opacity: 0.5;
+}
+
+.disabled {
+    all:unset;
+    cursor: not-allowed;
+    color: gray;
+    font-weight: 500;
+    padding: 0.5rem;
+    border-radius: 5px;
+    opacity: 0.5;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100vh;
+    background-color:rgba(255, 0, 0, 0.05);
+}
+
+main {
+    flex: 1;  /* This takes all available vertical space */
+    padding: 1.5rem 2rem; /* top-bottom, left-right */
+}
+
+footer {
+    background-color: #1e1e2f;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+    box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.3); /* reversed vertical shadow */
+}
+
+form {
+    background-color: white;
+    padding: 1.5rem 2rem;
+    margin: 1rem auto;
+    border-radius: 8px;
+    width: 90%; max-width: 600px; /* good for responsiveness */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+form label {
+    font-weight: 600;
+    color: #333;
+}
+
+form input[type="text"],
+form input[type="password"],
+form input[type="submit"],
+form select {
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    width: 100%;
+}
+
+form input[type="submit"] {
+    background-color: #1e1e2f;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+form input[type="submit"]:hover {
+    background-color: #3c3c5c;
+}
