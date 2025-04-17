@@ -2,8 +2,6 @@ package com.udacity.jwdnd.course1.cloudstorage.services;
 
 import java.util.ArrayList;
 
-import com.udacity.jwdnd.course1.cloudstorage.mappers.UserMapper;
-import com.udacity.jwdnd.course1.cloudstorage.services.HashService; // Just for clarity.
 import com.udacity.jwdnd.course1.cloudstorage.models.User;
 
 import lombok.AllArgsConstructor;
@@ -18,7 +16,7 @@ import org.springframework.stereotype.Service;
 @Service
 @AllArgsConstructor
 public class AuthenticationService implements AuthenticationProvider {
-    private UserMapper userMapper;
+    private UserService userService;
     private HashService hashService;
 
     @Override
@@ -26,7 +24,7 @@ public class AuthenticationService implements AuthenticationProvider {
         String username = authentication.getName();
         String password = authentication.getCredentials().toString();
 
-        User user = userMapper.findUserByUsername(username);
+        User user = userService.findUserByUsername(username);
         if (user != null) {
             String encodedSalt = user.getSalt();
             String hashedPassword = hashService.getHashedValue(password, encodedSalt);
