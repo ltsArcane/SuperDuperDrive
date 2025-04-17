@@ -16,7 +16,7 @@ import java.util.Base64;
 
 @Service
 public class HashService {
-    public final Logger logger = LoggerFactory.getLogger(HashService.class);
+    public Logger logger = LoggerFactory.getLogger(HashService.class);
 
     public String generateEncodedSalt() {
         byte[] salt = new byte[16];

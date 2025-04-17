@@ -2,23 +2,25 @@ package com.udacity.jwdnd.course1.cloudstorage.services;
 
 import com.udacity.jwdnd.course1.cloudstorage.mappers.UserMapper;
 import com.udacity.jwdnd.course1.cloudstorage.models.User;
-import lombok.RequiredArgsConstructor;
+
+import lombok.AllArgsConstructor;
+
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service @RequiredArgsConstructor
+@Service
+@AllArgsConstructor
 public class UserService {
-
-    private final UserMapper userMapper;
-    private final HashService hashService;
+    private UserMapper userMapper;
+    private HashService hashService;
 
     public List<User> findAllUsers() { return userMapper.findAllUsers(); }
 
     public User findUserByUsername(String username) { return userMapper.findUserByUsername(username); }
 
     public void insert(User user) {
-        if (findUserByUsername(user.getUsername()) != null) {throw new IllegalArgumentException("Username already exists");}
+        if (findUserByUsername(user.getUsername()) != null) {throw new IllegalArgumentException("Username already exists.");}
         String encodedSalt = hashService.generateEncodedSalt(); user.setSalt(encodedSalt);
         String hashedPassword = hashService.getHashedValue(user.getPassword(), encodedSalt); user.setPassword(hashedPassword);
 

@@ -11,11 +11,10 @@ import com.udacity.jwdnd.course1.cloudstorage.services.AuthenticationService;
 
 import lombok.AllArgsConstructor;
 
-@Configuration
-@EnableWebSecurity
+@Configuration @EnableWebSecurity 
 @AllArgsConstructor
 public class SecurityConfig {
-    private final AuthenticationService authService;
+    private AuthenticationService authService;
 
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
